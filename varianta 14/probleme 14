@@ -1,0 +1,47 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+ifstream f("bac.txt");
+int main()
+{
+    int x,s,k=0,p=0;
+    while(f>>x)
+    {
+        if(p==5)
+            {cout<<endl;p=0;}
+        cout<<x<<" ";
+        s=0;
+        while(x)
+        {
+            s=s+x%10;
+            x=x/10;
+        }
+        if(s%2==0)
+            k++;
+        p++;
+    }
+    cout<<endl;
+    cout<<k;
+    return 0;
+}
+#include <bits/stdc++.h>
+
+using namespace std;
+ifstream f("bac.txt");
+int main()
+{
+    int n,i,fr[10]= {0},x;
+    f>>n;
+    for(i=1; i<=n; ++i)
+    {
+        f>>x;
+        fr[x]++;
+    }
+    for(i=0; i<10; ++i)
+        while(fr[i])
+        {
+            cout<<i<<" ";
+            fr[i]--;
+        }
+    return 0;
+}
