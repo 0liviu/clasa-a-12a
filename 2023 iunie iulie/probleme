@@ -1,0 +1,79 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+ifstream f("bac.txt");
+int abundent(int n)
+{
+    int sn=0,sk=0,i,j;
+    for(i=1;i<=n;i++)
+        if(n%i==0)
+        sn=sn+i;
+    for(i=n-1;i>=1;i--)
+    {
+        for(j=1;j<=i;j++)
+            if(i%j==0)
+            sk=sk+j;
+        if(sn/n<sk/i)
+            return 0;
+        sk=0;
+    }
+    return 1;
+}
+int main()
+{
+    cout<<abundent(6);
+    return 0;
+}
+#include <bits/stdc++.h>
+
+using namespace std;
+ifstream f("bac.txt");
+
+int main()
+{
+    int a[100][100],ns,np,i,j,mxa=0;
+    f>>ns>>np;
+    cout<<ns<<" "<<np<<endl;
+    for(i=1;i<=ns;i++)
+    for(j=1;j<=np;j++)
+        f>>a[i][j];
+    for(i=1;i<=ns;i++)
+        {
+        for(j=1;j<=np;j++)
+        cout<<a[i][j]<<" ";
+        cout<<endl;
+        }
+        cout<<endl;
+    for(i=1;i<=ns;i++)
+        {
+             mxa=0;
+            for(j=1;j<=np;j++)
+                if(a[i][j]>mxa)
+                    mxa=j;
+            cout<<i<<":"<<mxa<<" ";
+        }
+    return 0;
+}
+#include <bits/stdc++.h>
+
+using namespace std;
+ifstream f("bac.txt");
+
+int main()
+{
+    int fr[100]={0},x,fr2[100]={0},k=0,i,y;
+    while(f>>x)
+    {
+        if(x>100)
+        {y=x%100;
+        fr[y]++;
+        while(x>=100)
+            x=x/10;
+        fr2[x]++;}
+    }
+    for(i=10;i<=99;i++)
+    if(fr[i]==fr2[i] && fr[i]>0)
+        k++;
+    cout<<k;
+    return 0;
+}
