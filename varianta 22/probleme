@@ -1,0 +1,29 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+ifstream f("bac.txt");
+
+int main()
+{
+    int n,a,b,p,i,j,k=0,ok=0;
+    f>>n;
+    while(i<n)
+    {
+        f>>a>>b;
+        k=0;
+        for(j=b;j>=a;j--)
+         {
+             ok=0;
+             while(pow(2,k)<j)
+                 k++;
+             if(pow(2,k-1)==j)
+             {cout<<j<<" ";ok=1;break;}
+
+         }
+        if(ok==0)
+            cout<<0<<" ";
+        i++;
+    }
+    return 0;
+}
