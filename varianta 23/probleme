@@ -20,3 +20,29 @@ SUBIECTUL 2
         for(int j=1;j<=n;j++)
             cout<<a[i][j]<<" ";
 
+#include <bits/stdc++.h>
+
+using namespace std;
+ifstream f("bac.txt");
+int shift(int a[100],int n)
+{
+  int pri=a[1];
+  for(int i=1;i<n;i++)
+    swap(a[i],a[i+1]);
+  a[n]=pri;
+}
+int main()
+{
+    int a[100],i,n,k;
+    f>>n>>k;
+    for(i=1;i<=n;i++)
+    f>>a[i];
+    shift(a,5);
+    shift(a,4);
+    shift(a,3);
+    shift(a,2);
+    shift(a,1);
+    for(i=1;i<=n;i++)
+      cout<<a[i]<<" ";
+    return 0;
+}
