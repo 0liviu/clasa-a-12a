@@ -1,0 +1,47 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int inv(int x)
+{
+    int y=0;
+    while(x)
+    {
+        y=y*10+x%10;
+        x=x/10;
+    }
+    return y;
+}
+int main()
+{
+    int x=0,i,a,b;
+    ifstream f("bac.in");
+    f>>a>>b;
+    for(i=a;i<=b;i++)
+        if(sqrt(i)==(int)sqrt(i) && sqrt(inv(i))==(int)sqrt(inv(i)) && inv(i)<=b && inv(i)>=a)
+        x++;
+    cout<<x;
+    return 0;
+}
+
+
+#include <bits/stdc++.h>
+
+using namespace std;
+ifstream f("bac.in");
+int main()
+{
+    char x[21],suf[3];
+    int n,k=0;
+    f>>x;
+    n=strlen(x);
+    strcpy(suf,x+(n-2));
+    while(f>>x)
+    {
+        n=strlen(x);
+        if(strcmp(x+(n-2),suf)==0)
+            k++;
+    }
+    cout<<k;
+    return 0;
+}
