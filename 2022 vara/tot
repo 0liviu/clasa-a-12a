@@ -1,0 +1,125 @@
+subiect 1
+1.c 
+2.d
+3.a
+4.b
+5.c
+
+subiect 2
+2022 2023
+#include <bits/stdc++.h>
+
+using namespace std;
+ifstream f("bac.txt");
+int main()
+{
+   char s[51],id[51];
+   f.get(s,51);
+   int i,n;
+   n=strlen(s);
+   for(i=0;i<=n;i++)
+    if(s[i]==' ')
+   break;
+   strcpy(id,s+i+1);
+   n=strlen(id);
+   strcpy(id+n,"2022");
+   cout<<id;
+    return 0;
+}
+
+subiect 3
+#include <bits/stdc++.h>
+
+using namespace std;
+ifstream f("bac.txt");
+int secventa(long long n)
+{
+    int x=n%10,nr=0,ok=0;
+    n=n/10;
+    nr=nr*10+x;
+    if(x==2)
+        ok=1;
+    x=n%10;
+    n=n/10;
+    while(n)
+    {
+        if(n%10==x && x==2)
+            nr=nr*10;
+        else nr=nr*10+x;
+        x=n%10;
+        n=n/10;
+    }
+    nr=nr*10+x;
+    while(nr)
+    {
+        n=n*10+nr%10;
+        nr=nr/10;
+    }
+    if(ok)
+        n=(n/10)*10;
+    return n;
+}
+int main()
+{
+   cout<<secventa(202233228);
+    return 0;
+}
+
+#include <bits/stdc++.h>
+
+using namespace std;
+ifstream f("bac.txt");
+int minim(int a,int b,int c,int d)
+{
+    int k=0;
+    if(a<=b && a<=c && a<=d)
+        k=a;
+    if(b<=a && b<=c && b<=d)
+        k=b;
+    if(c<=b && c<=a && c<=d)
+        k=c;
+    if(d<=b && d<=c && d<=a)
+        k=d;
+    return k;
+}
+int main()
+{
+    int a[6][5],m,n,i,j,k=0;
+    f>>m>>n;
+    for(i=1;i<=n;i++)
+        for(j=1;j<=m;j++)
+        f>>a[i][j];
+    for(i=1;i<=n;i++)
+    for(j=1;j<=m;j++)
+        if(a[i][j]<a[i-1][j] && a[i][j]<a[i+1][j] &&
+           a[i][j]<a[i][j-1]
+           )
+        if(j==m || a[i][j]<a[i][j+1])
+    {
+        if(j!=m)
+        k=k+(minim(a[i-1][j],a[i+1][j],a[i][j-1],a[i][j+1])-a[i][j]);
+        else k=k+(minim(a[i-1][j],a[i+1][j],a[i][j-1],9999)-a[i][j]);
+    }
+     cout<<k;
+    return 0;
+}
+
+#include <bits/stdc++.h>
+
+using namespace std;
+ifstream f("bac.txt");
+
+int main()
+{
+    int x,y,z,fr[10000]={0},k=0;
+   f>>x>>y;
+   while(f>>z)
+   {
+       if(z<=y && z>=x)
+        fr[z]++;
+   }
+   for(int i=1;i<=1000;i++)
+    if(fr[i]>0) k++;
+   cout<<k;
+    return 0;
+}
