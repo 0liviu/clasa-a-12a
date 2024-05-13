@@ -1,0 +1,81 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+ ifstream f("bac.in");
+int main()
+{
+    int a,x,k;
+    f>>a;
+    while(f>>x)
+    {
+        k=a;
+        while(k<x)
+            k=k*a;
+        if(k==x)
+            cout<<x<<" ";
+        if(x==1)
+            cout<<x<<" ";
+    }
+    return 0;
+}
+#include <bits/stdc++.h>
+
+using namespace std;
+ ifstream f("bac.in");
+int main()
+{
+    int m,n,i,j,a[100][100],sortat;
+    f>>m>>n;
+    for(i=1;i<=m;i++)
+        for(j=1;j<=n;j++)
+        f>>a[i][j];
+    for(i=1;i<=m;i++)
+    do{
+        sortat=0;
+        for(j=1;j<=n;j++)
+            if(a[i][j]<a[i][j+1])
+            {
+                swap(a[i][j],a[i][j+1]);
+                sortat=1;
+            }
+    }while(sortat);
+    for(i=1;i<=m;i++)
+       {
+        for(j=1;j<=n;j++)
+        cout<<a[i][j]<<" ";
+        cout<<endl;
+       }
+    return 0;
+}
+#include <bits/stdc++.h>
+
+using namespace std;
+ifstream f("bac.in");
+void desc(int n,int d,int &p,int &e)
+{
+    int k=1,m=0;
+    while(k<n)
+    {
+        k=k*d;
+        m++;
+        if(n%k==0 && k!=n)
+            {p=k;e=m;}
+    }
+
+}
+int main()
+{
+     int p=0,e=0,n,i,s=0;
+     f>>n;
+     i=n-1;
+     while(s<n)
+     {
+         desc(n,i,p,e);
+         if(p && e)
+            {
+                s=s+pow(p,e);
+                cout<<p<<"*"<<e<<" ";
+            }
+         i--;
+     }
+}
