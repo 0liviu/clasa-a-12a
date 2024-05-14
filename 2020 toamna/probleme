@@ -1,0 +1,54 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+ifstream f("bac.in");
+int kpn(int a,int b,int k)
+{
+    int c=0,i,j,s=0;;
+    for(i=a;i<=b;i++)
+    {
+        s=0;
+        for(j=1;j<=i;j++)
+            if(i%j==0)
+            s=s+j;
+        if(s%2==i%2)
+            c++;
+        if(c==k)
+            return i;
+    }
+}
+int main()
+{
+    cout<<kpn(27,50,3);
+    return 0;
+}
+
+#include <bits/stdc++.h>
+
+using namespace std;
+ifstream f("bac.in");
+int main()
+{
+    int x,a=0,b=0,fr[101]={0},i;
+    while(f>>x)
+    {
+        if(x<100 && x>9)
+            fr[x]++;
+    }
+    for(i=10;i<100;i++)
+        if(fr[i])
+    {
+        a=i-1;break;
+    }
+    for(i=100;i>10;i--)
+        if(fr[i]>0)
+    {
+        b=i+1;break;
+    }
+    if(a==0)
+        cout<<"nu exista";
+    else
+    cout<<a<<" "<<b;
+
+    return 0;
+}
