@@ -1,0 +1,87 @@
+V15 S3 1
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+void p(int n, int a[51],int &max, int &imax, float &sum)
+{
+    max=-99999;
+    imax=0;
+    sum=0;
+    for(int i=1;i<=n;i++)
+    {
+        sum=sum+a[i];
+        if(a[i]>max)
+        {
+            max=a[i];
+            imax=i;
+        }
+    }
+}
+
+int main()
+{
+    int n,a[51],max,imax;
+    float sum;
+    cin>>n;
+    for(int i=1;i<=n;i++)
+        cin>>a[i];
+    p(n,a,max,imax,sum);
+    sum=(sum-max+1)/n;
+    cout<<fixed<<setprecision(2)<<sum;
+    return 0;
+}
+
+2
+  #include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int n,m[51][51],s=0,nr=0,ok=0;
+    cin>>n;
+    for(int i=1;i<=n;i++)
+        for(int j=1;j<=n;j++)
+            cin>>m[i][j];
+    for(int i=1;i<=n;i++)
+        for(int j=1;j<=n;j++)
+            if(m[i][j]>0 && i%2==0)
+                if(i+j>n+1)
+                {
+                    s=s+m[i][j];
+                    nr++;ok=1;
+                }
+    if(ok)
+        cout<<(s*1.0)/nr;
+    else
+        cout<<"NU EXISTA";
+    return 0;
+}
+
+
+3
+  #include <iostream>
+#include <fstream>
+using namespace std;
+
+ifstream fin("bac.txt");
+
+int x,y,z,n;
+
+int main()
+{
+    fin>>n>>x>>y;
+    while(fin>>z)
+    {
+        if(x<n && y<n)
+            if(x!=y)
+                cout<<"("<<x<<","<<y<<")"<<" ";
+        x=y;
+        y=z;
+    }
+    if(x<n && y<n)
+            if(x!=y)
+                cout<<"("<<x<<","<<y<<")"<<" ";
+    return 0;
+}
