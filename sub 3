@@ -29,3 +29,67 @@ int main()
     cout<<fixed<<setprecision(2)<<ma;
     return 0;
 }
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int factori(int n,int v[10000],int nf)
+{
+    int k=2,c=0,i=1,ok=1;
+    nf=0;
+    while(n>=1)
+    {
+        if(n%k==0)
+        {
+            n=n/k;
+            c++;
+        }
+        else
+        {
+            if(c>0)
+            {
+            v[i]=k;
+            i++;
+            v[i]=c;
+            i++;
+            }
+            k++;
+            c=0;
+        }
+    }
+    nf=i/2;
+    for(i=1;i<=2*nf;i++)
+        cout<<v[i]<<" ";
+    cout<<endl<<nf;
+}
+ifstream f("bac.in");
+int main()
+{
+    int n,v[100]={0},nf=0;
+    factori(350,v,nf);
+    return 0;
+}
+
+#include <bits/stdc++.h>
+
+using namespace std;
+int main()
+{
+    int a[100][100],i,j,n;
+    cin>>n;
+    for(i=1;i<=n;i++)
+        for(j=1;j<=n;j++)
+    {
+        if(j%2==1)
+            a[i][j]=i;
+            else
+                a[i][j]=n-i+1;
+    }
+    for(i=1;i<=n;i++)
+        {
+            for(j=1;j<=n;j++)
+                cout<<a[i][j]<<" ";
+            cout<<endl;
+        }
+    return 0;
+}
